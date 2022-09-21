@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Phonei</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://js.stripe.com/v3/"></script>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <center>
+      <h1>Phonei Store</h1>
+    </center>
+    <hr>
+    <p class="notice" style="background-color: green;"><%= notice %></p>
+    <p class="alert" style="background-color: red;"><%= alert %></p>
+    <% if user_signed_in? %>
+      <br>
+      <%= link_to "Products", products_path %>
+      <br>
+      <%= link_to current_user.email, edit_user_registration_path %>
+      <br>
+      <%= current_user.stripe_customer_id %>
+      <br>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <hr>
+      <h1>Shopping cart</h1>
+      <% @cart.each do |product| %>
+        <%= product.name %>
+        <br>
+      <% end %>
+      <% if @cart.present? %>
+        <%= @cart.collect { |item| item.to_builder.attributes! } %>
+        <%= button_to "Buy now!", checkout_create_path, remote: true, data: { disable_with: "validating..."} %>
+      <% end %>
+      <hr>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
