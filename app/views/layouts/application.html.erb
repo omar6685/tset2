@@ -24,7 +24,7 @@
       <br>
       <%= current_user.stripe_customer_id %>
       <br>
-      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <%= link_to "Log out", destroy_user_session_path, method: :get %>
       <hr>
       <h1>Shopping cart</h1>
       <% @cart.each do |product| %>
