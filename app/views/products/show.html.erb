@@ -8,6 +8,10 @@
   <%= number_to_currency(@product.price/100) %>
 </p>
 
+<div class="feature-image">
+<%= image_tag(@product.image_url(:default)) %>
+</div>
+
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
 <%= button_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
