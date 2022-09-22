@@ -7,12 +7,14 @@ class Product < ApplicationRecord
     name
   end
 
+  monetize :price, as: :price_cents
 
-  
+  # transform shopping cart products into an array of line items
+
   # create stripe product and assign to this product
   after_create do
     product = Stripe::Product.create(name: name)
-    price = Stripe::Price.create(product: product, unit_amount: self.price, currency: "usd")
+    price = Stripe::Price.create(product: product, unit_amount: self.price, currency: self.currency)
     update(stripe_product_id: product.id, stripe_price_id: price.id)
   end
 
@@ -21,12 +23,12 @@ class Product < ApplicationRecord
   # this is all additional complexity.
   # better just create new products.
 
-  #after_update :create_and_assign_new_stripe_price, if: :saved_change_to_price?
+  # after_update :create_and_assign_new_stripe_price, if: :saved_change_to_price?
   # after_update :create_and_assign_new_stripe_price, if: :saved_change_to_currency?
 
-  #def create_and_assign_new_stripe_price
-  #  price = Stripe::Price.create(product: self.stripe_product_id, unit_amount: self.price, currency: self.currency)
-  #  update(stripe_price_id: price.id)
-  #end
+  # def create_and_assign_new_stripe_price
+  #   price = Stripe::Price.create(product: self.stripe_product_id, unit_amount: self.price, currency: self.currency)
+  #   update(stripe_price_id: price.id)
+  # end
 
 end
