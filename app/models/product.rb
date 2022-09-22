@@ -7,7 +7,6 @@ class Product < ApplicationRecord
     name
   end
 
-  monetize :price, as: :price_cents
 
   # transform shopping cart products into an array of line items
 
