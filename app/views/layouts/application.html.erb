@@ -26,16 +26,6 @@
       <br>
       <%= link_to "Log out", destroy_user_session_path, method: :get %>
       <hr>
-      <h1>Shopping cart</h1>
-      <% @cart.each do |product| %>
-        <%= product.name %>
-        <br>
-      <% end %>
-      <% if @cart.present? %>
-        <%= @cart.collect { |item| item.to_builder.attributes! } %>
-        <%= button_to "Buy now!", checkout_create_path, remote: true, data: { disable_with: "validating..."} %>
-      <% end %>
-      <hr>
     <% end %>
     <%= yield %>
   </body>
