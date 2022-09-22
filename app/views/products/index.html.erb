@@ -4,14 +4,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Currency</th>
       <th>Price</th>
-      <th>Stripe Product Id</th>
-      <th>Stripe Price Id</th>
-      <th>Stripe Currency</th>
-      <th>Stripe Price</th>
-      <th>Shopping cart</th>
       <th>Sales count</th>
+      <th>Payment</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -20,14 +15,9 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.currency %></td>
         <td><%= number_to_currency(product.price/100) %></td>
-        <td><%= product.stripe_product_id %></td>
-        <td><%= product.stripe_price_id %></td>
-        <td><%= Stripe::Price.retrieve(product.stripe_price_id)&.currency %></td>
-        <td><%= Stripe::Price.retrieve(product.stripe_price_id)&.unit_amount/100 %></td>
-        <td><%= button_to "Buy now!", checkout_create_path, params: {id: product.id}, remote: true, data: { disable_with: "validating..."} %></td>
         <td><%= product.sales_count %></td>
+        <td><%= button_to "Buy now!", checkout_create_path, params: {id: product.id}, remote: true, data: { disable_with: "validating..."} %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Destroy', product, method: :get, data: { confirm: 'Are you sure?' } %></td>
       </tr>
