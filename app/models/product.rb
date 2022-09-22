@@ -21,12 +21,12 @@ class Product < ApplicationRecord
   # this is all additional complexity.
   # better just create new products.
 
-  after_update :create_and_assign_new_stripe_price, if: :saved_change_to_price?
+  #after_update :create_and_assign_new_stripe_price, if: :saved_change_to_price?
   # after_update :create_and_assign_new_stripe_price, if: :saved_change_to_currency?
 
-  def create_and_assign_new_stripe_price
-    price = Stripe::Price.create(product: self.stripe_product_id, unit_amount: self.price, currency: self.currency)
-    update(stripe_price_id: price.id)
-  end
+  #def create_and_assign_new_stripe_price
+  #  price = Stripe::Price.create(product: self.stripe_product_id, unit_amount: self.price, currency: self.currency)
+  #  update(stripe_price_id: price.id)
+  #end
 
 end
