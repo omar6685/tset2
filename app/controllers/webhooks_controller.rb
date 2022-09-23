@@ -22,9 +22,15 @@ class WebhooksController < ApplicationController
     end
 
     # Handle the event
-    puts "Unhandled event type: #{event.type}"
-
-    status 200
+    case event.type
+    when 'checkout.session.completed'
+      @session = event.data.object
+      @session_with_expand = Stripe::Checkout::Session.retrieve({ id: session.id, expand: ["line_items"]})
+      @session_with_expand.line_items.data.each do |line_item|
+        product = Product.find_by(stripe_product_id: line_item.price.product)
+        product.increment!(:sales_count)
+      end
+    end
 
     render json: { message: 'success' }
   end
