@@ -4,6 +4,7 @@ class Product < ApplicationRecord
   validates :price, numericality: {greater_than: 0, less_than: 10000000}
   mount_uploader :image, ImageUploader
 
+  monetize :price, as: :price_cents
 
   
   BRAND = %w{ Apple Samsung Xiomi }
