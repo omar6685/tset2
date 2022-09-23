@@ -3,6 +3,7 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
+    endpoint_secret = 'whsec_49bcygiLavzBn6yvUKLSMY4XN0onuKcy'
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     event = nil
