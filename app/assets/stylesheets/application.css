@@ -491,7 +491,7 @@ th:last-child{
 }
 .form-container form{
     max-width: 300px;
-    padding: 0 20px;
+    padding: 0 60px;
     position:absolute;
     top: 130px;
     transition: transform 1s;
@@ -509,6 +509,9 @@ form .btn{
     border: none;
     cursor: pointer;
     margin: 10px 0; 
+}
+.check{
+    height: 5px;
 }
 form .btn:focus{
     outline: none;
