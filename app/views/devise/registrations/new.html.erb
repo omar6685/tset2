@@ -1,43 +1,35 @@
-<div class="section">
-  <div class="container">
-  <div class="columns is-centered">
+<div class="account-page">
+	<div class="container">
+		<div class="row">
+			<div class="col-2">
+			    <div class="form-container"><!--column for form-->
+				
+				        <h2 class="title is-2">Sign up</h2>
 
-    <div class="column is-4">
+				        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-    <h2 class="title is-2">Sign Up</h2>
+				  	            <div class="field">
+				    	            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+				                </div>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+				                <div class="field">
+                            
+				                    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password 6 characters mini" %>
+					              </div>
+                      
+				                <div class="field">
+                          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password Confirmation" %>
+                        </div>
 
-
-    <div class="field">
-      <div class="control">
-      <%= f.input :email, required: true, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" } %>
-      </div>
+							
+							          <div class="actions">
+				                    <%= f.submit "Log up", class: "btn" %>
+								        </div>
+							          <br/>
+				                <%= render "devise/shared/links" %>
+				        <% end %>
+				</div>
+			</div>
+		</div>
     </div>
-
-    <div class="field">
-      <div class="control">
-        <%= f.input :password, required: true, input_html: { class:"input" }, wrapper: false, label_html: { class:"label" }, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <%= f.input :password_confirmation, required: true, input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
-      </div>
-    </div>
-
-    <div class="field">
-      <div class="control">
-        <%= f.button :submit, "Sign up", data: { turbo: false }, class:"button is-warning is-medium" %>
-      </div>
-    </div>
-
-    <% end %>
-      <br />
-      <%= render "devise/shared/links" %>
-    </div>
-    </div>
-  </div>
 </div>
