@@ -1,18 +1,47 @@
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
 
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@product.price/100) %>
-</p>
+<div class="small-container single-product">
+  <div class="row">
+        
+  
 
-<div class="feature-image">
-<%= image_tag(@product.image_url(:default)) %>
+      <div class="col-2">
+        <div class="feature-image">
+          <%= image_tag(@product.image_url(:default)) %><!--id in bigger image so we can replace with its variants, so when we click on its different angle, it will show in large picture using JS-->
+        </div>
+      </div>
+
+      
+      <div class="col-2">
+      <p><%= link_to "Home", products_path %>/ Phonei</p>
+      <h1><%= @product.name %></h1>
+      <h4><%= number_to_currency(@product.price/100) %></h4>
+      <a class= "btn-1"><%= button_to "Buy now!", checkout_create_path, params: {id: @product.id}, remote: true, data: { disable_with: "validating..."}, class: "btn" %></a>
+      <h3>Product Details <i class="fa fa-indent" aria-hidden="true"></i></h3>
+      <br>
+      
+      <p>
+        <strong>Brand :</strong>
+        <%= @product.brand %>
+      </p>
+
+      <p>
+        <strong>Model :</strong>
+        <%= @product.model %>
+      </p>
+
+      <p>
+        <strong>Condition :</strong>
+        <%= @product.condition %>
+      </p>
+        <p><%= @product.description %>
+      </p>
+
+
+
+  </div>
+  
+
+  <a class= "btn-1"><%= button_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn" %>
+
+
 </div>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
-<%= button_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
-
