@@ -105,6 +105,17 @@ p{
     border-radius: 30px;
     transition: background 0.5s;/*below I have specified the change in button color when hover. this transition will delay color change by 0.5 sec*/
 }
+
+.btn-2{
+    display: inline-block;
+    background-color: #fff;
+    color: #fff;
+    padding: 0px 0px;
+    margin: 0px 0;
+    margin-left: 0px;
+    border-radius: 30px;
+    transition: background 0.5s;/*below I have specified the change in button color when hover. this transition will delay color change by 0.5 sec*/
+}
 .btn:hover{
     background: #563434;
 }
@@ -342,7 +353,7 @@ ul{
 /*All prodcuts page*/
 .row-2{
     justify-content: space-between;/*create some space heading and selection panel*/
-    margin: 100px auto 50px;
+    margin: 50px auto 50px;
 }
 select{
     border: 1px solid #ff523b;/*create red border around dropdown select panel*/
@@ -370,7 +381,7 @@ select:focus{
 }
 /*single product details*/
 .single-product{
-    margin-top: 80px;
+    margin-top: 0px;
 }
 .single-product .col-2 img{
     padding: 0;
@@ -448,7 +459,7 @@ td input{
 }
 td a{
     color: #ff523b;
-    ffont-size: 12px;
+    font-size: 12px;
 }
 td img{
     width: 80px;

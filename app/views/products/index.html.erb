@@ -1,31 +1,35 @@
-<h1>Products</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Sales count</th>
-      <th>Payment</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<div class="small container">
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= number_to_currency(product.price/100) %></td>
-        <td><%= product.sales_count %></td>
-        <td><%= button_to "Buy now!", checkout_create_path, params: {id: product.id}, remote: true, data: { disable_with: "validating..."} %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Destroy', product, method: :get, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <!--we have create an another row to add title and give user dropdown list with four options so they can select what they want-->
+  <div class="row row-2">
+        <h2>All Products</h2>
+        <% if current_user.admin == true %>
+          <a class= "btn-1"><%= button_to 'New Product', new_product_path, class: "btn" %></a>
+        <% end %>
+         <select>
+             <option>Default Sorting</option>
+             <option>Sort by Price</option>
+             <option>Sort by Popularity</option>
+             <option>Sort by Sale</option>
+         </select>
+    </div>
 
-<br>
+     <!--This is the same class which already have index.html consisting of 4 columns-->
+    <div class="row">
+         <!--this time we will make 4 columns-->
+ 
+         <!--it contains 4 different products with heading h4, image, price <p> and rating star-->
+            <% @products.each do |product| %>
+              <div class="col-4">
+                <%= link_to image_tag(product.image_url(:thumb)), product %>
+                <h4><%= product.name %></h4><!--product title-->
+                <p><%= number_to_currency(product.price/100) %></p><!--product price-->
+                <p><a class= "btn-2"><%= button_to "Buy now!", checkout_create_path, params: {id: product.id}, remote: true, data: { disable_with: "validating..."}, class: "btn" %></a></p>
+              </div>
+            <% end %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'New Product', new_product_path %>
-<hr>
+
