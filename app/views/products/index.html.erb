@@ -5,7 +5,7 @@
   <div class="row row-2">
         <h2>All Products</h2>
         <% if current_user.admin == true %>
-          <a class= "btn-1"><%= button_to 'New Product', new_product_path, class: "btn" %></a>
+          <a class= "btn-1"><%= link_to 'New Product', new_product_path, class: "btn" %></a>
         <% end %>
          <select>
              <option>Default Sorting</option>
