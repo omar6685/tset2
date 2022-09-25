@@ -15,32 +15,32 @@
 
     <div class="container">
 
-    <!--making navigation bar consist of logo and menu links-->
-    <div class="navbar">
-        <div class="logo">
-            <img src="<%= asset_path('logo.png') %>" alt="Phonei logo" width=125px>
-        </div>
+      <!--making navigation bar consist of logo and menu links-->
+      <div class="navbar">
+          <div class="logo">
+              <img src="<%= asset_path('logo.png') %>" alt="Phonei logo" width=125px>
+          </div>
 
-        <!--menu-->
-         <nav> 
-          <p class="notice" ><%= notice %></p>
-          <p class="alert"><%= alert %></p>
-          <% if user_signed_in? %>
-            <ul id="MenuItems"><!--use this id in js-->                        
-                <li><%= link_to "Home", products_path %></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact</a></li>
-                <li><%= link_to "Account", edit_user_registration_path %></li>
-                <li><%= link_to "Log out", destroy_user_session_path, method: :get %></li>
-            </ul>
-          <% end %>
-        </nav>
-        <img src="<%= asset_path('cart.png') %>" alt="cart" width=30px height=30px><!--adding cart image in navigation section -->
-        <img src="<%= asset_path('menu.png') %>" class="menu-icon" onclick="menutoggle()"><!--this is the menu icon which  will be displayed on smaller screens with 3 lines, and when we click on it, it will open upside down or like dropdown menu, to open like this we have pass one menutoggle function to it which we have written in the end in js-->
+          <!--menu-->
+          <nav> 
+            <p class="notice" ><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+            <% if user_signed_in? %>
+              <ul id="MenuItems"><!--use this id in js-->                        
+                  <li><%= link_to "Home", products_path %></li>
+                  <li><a href="">About</a></li>
+                  <li><a href="">Contact</a></li>
+                  <li><%= link_to "Account", edit_user_registration_path %></li>
+                  <li><%= link_to "Log out", destroy_user_session_path, method: :get %></li>
+              </ul>
+            <% end %>
+          </nav>
+          <img src="<%= asset_path('cart.png') %>" alt="cart" width=30px height=30px><!--adding cart image in navigation section -->
+          <img src="<%= asset_path('menu.png') %>" class="menu-icon" onclick="menutoggle()"><!--this is the menu icon which  will be displayed on smaller screens with 3 lines, and when we click on it, it will open upside down or like dropdown menu, to open like this we have pass one menutoggle function to it which we have written in the end in js-->
+      </div>
     </div>
-</div>
-    <p class="notice" ><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
+    <%= render "layouts/footer" %>
+
   </body>
 </html>
