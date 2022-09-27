@@ -29,6 +29,9 @@
             <% if user_signed_in? %>
               <ul id="MenuItems"><!--use this id in js-->                        
                   <li><%= link_to "Home", products_path %></li>
+                  <% if current_user.admin == true %>
+                    <li><%= link_to "Dashbourd", rails_admin_path %></li>
+                  <% end %>
                   <li><a href="">About</a></li>
                   <li><a href="">Contact</a></li>
                   <li><%= link_to "Account", edit_user_registration_path %></li>
