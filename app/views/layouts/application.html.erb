@@ -24,8 +24,6 @@
 
           <!--menu-->
           <nav> 
-            <p class="notice" ><%= notice %></p>
-            <p class="alert"><%= alert %></p>
             <% if user_signed_in? %>
               <ul id="MenuItems"><!--use this id in js-->                        
                   <li><%= link_to "Home", products_path %></li>
@@ -43,6 +41,8 @@
           <img src="<%= asset_path('menu.png') %>" class="menu-icon" onclick="menutoggle()"><!--this is the menu icon which  will be displayed on smaller screens with 3 lines, and when we click on it, it will open upside down or like dropdown menu, to open like this we have pass one menutoggle function to it which we have written in the end in js-->
       </div>
     </div>
+    <p class="notice" ><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
     <%= render "layouts/footer" %>
     

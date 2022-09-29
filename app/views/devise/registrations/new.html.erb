@@ -9,16 +9,16 @@
 				        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
 				  	            <div class="field">
-				    	            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+				    	            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", required: true %>
 				                </div>
 
 				                <div class="field">
                             
-				                    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password 6 characters mini" %>
+				                    <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password 6 characters mini", required: true %>
 					              </div>
                       
 				                <div class="field">
-                          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password Confirmation" %>
+                          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password Confirmation" , required: true %>
                         </div>
 
 							

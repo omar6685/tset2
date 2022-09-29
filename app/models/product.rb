@@ -1,9 +1,14 @@
 class Product < ApplicationRecord
 
   validates :name, :price, presence: true
-  validates :price, numericality: {greater_than: 0, less_than: 10000000}
+  validates :price, numericality: {greater_than: 5000, less_than: 1000000}
   mount_uploader :image, ImageUploader
-
+  validates :name, length: { maximum: 30 }
+  validates :name, length: { minimum: 3 }
+  validates :model, length: { maximum: 30 }
+  validates :model, length: { minimum: 3 }
+  validates :description, length: { maximum: 1000 }
+  validates :description, length: { minimum: 100 }
 
   
   BRAND = %w{ Apple Samsung Xiomi }
